@@ -1,0 +1,935 @@
+/************************************************
+            ATP FLEET MANAGEMENT
+************************************************/
+
+/*=================================================
+                    إعادة الضبط
+=================================================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    direction:rtl;
+
+    font-family:Tahoma, Arial, sans-serif;
+
+    background:#f4f6f9;
+
+    color:#222;
+
+}
+
+
+/*=================================================
+                    الصفحات
+=================================================*/
+
+.page{
+
+    width:100%;
+
+    min-height:100vh;
+
+    padding:20px;
+
+}
+
+
+.container{
+
+    max-width:900px;
+
+    margin:auto;
+
+    text-align:center;
+
+}
+
+
+/*=================================================
+                    الشعار
+=================================================*/
+
+.logo-container{
+
+    margin:15px 0 25px;
+
+}
+
+
+.logo{
+
+    width:150px;
+
+    height:150px;
+
+    object-fit:contain;
+
+}
+
+
+/*=================================================
+                    العناوين
+=================================================*/
+
+h1{
+
+    font-size:28px;
+
+    margin-bottom:8px;
+
+    color:#0d47a1;
+
+}
+
+
+h2{
+
+    font-size:22px;
+
+    margin-bottom:18px;
+
+}
+
+
+h3{
+
+    font-size:18px;
+
+    margin-bottom:8px;
+
+    color:#1565c0;
+
+}
+
+
+/*=================================================
+                    الأزرار
+=================================================*/
+
+button{
+
+    width:100%;
+
+    height:58px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#1565c0;
+
+    color:#fff;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-top:10px;
+
+    transition:.25s;
+
+}
+
+
+button:hover{
+
+    opacity:.92;
+
+}
+
+
+/*=================================================
+                بطاقات الإدخال
+=================================================*/
+
+.input-card{
+
+    width:100%;
+
+    min-height:75px;
+
+    background:#fff;
+
+    border-radius:14px;
+
+    padding:14px;
+
+    margin-bottom:15px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.10);
+
+}
+
+
+.card-title{
+
+    width:35%;
+
+    font-weight:bold;
+
+    text-align:right;
+
+}
+
+
+.card-input{
+
+    width:65%;
+
+}
+
+
+/*=================================================
+                    الحقول
+=================================================*/
+
+select,
+input[type=text],
+textarea{
+
+    width:100%;
+
+    border:1px solid #cccccc;
+
+    border-radius:10px;
+
+    padding:10px;
+
+    font-size:16px;
+
+    background:#fff;
+
+}
+
+
+select,
+input[type=text]{
+
+    height:45px;
+
+}
+
+
+textarea{
+
+    height:70px;
+
+    resize:none;
+
+}
+
+/*=================================================
+                صندوق اسم السائق
+=================================================*/
+
+.driver-box{
+
+    width:100%;
+
+    height:45px;
+
+    border:1px solid #cccccc;
+
+    border-radius:10px;
+
+    background:#ffffff;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+}
+
+
+/*=================================================
+            أزرار حالة المركبة
+=================================================*/
+
+.status-buttons{
+
+    width:100%;
+
+    height:45px;
+
+    display:flex;
+
+    overflow:hidden;
+
+    border:1px solid #cccccc;
+
+    border-radius:10px;
+
+}
+
+
+.status-btn{
+
+    flex:1;
+
+    margin:0;
+
+    height:100%;
+
+    border:none;
+
+    border-radius:0;
+
+    background:#f5f5f5;
+
+    color:#333;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+}
+
+
+.status-btn.active{
+
+    background:#2e7d32;
+
+    color:#ffffff;
+
+}
+
+
+.status-btn.stop-active{
+
+    background:#d32f2f;
+
+    color:#ffffff;
+
+}
+
+
+/*=================================================
+            بطاقات الأقسام الرئيسية
+=================================================*/
+
+.section-card{
+
+    width:100%;
+
+    min-height:60px;
+
+    background:#0d47a1;
+
+    color:#ffffff;
+
+    border-radius:14px;
+
+    padding:16px;
+
+    margin-bottom:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+
+    overflow-x:auto;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.10);
+
+}
+
+
+.section-card::-webkit-scrollbar{
+
+    height:4px;
+
+}
+
+
+/*=================================================
+                حاوية المركبات
+=================================================*/
+
+.vehicles-container{
+
+    margin-bottom:20px;
+
+}
+
+
+/*=================================================
+                بطاقة المركبة
+=================================================*/
+
+.vehicle-card{
+
+    width:100%;
+
+    min-height:30px;
+
+    padding:5px 10px;
+
+    margin-bottom:5px;
+
+    background:#ffffff;
+
+    border-radius:12px;
+
+    display:flex;
+
+    align-items:center;
+
+    box-shadow:0 1px 5px rgba(0,0,0,.10);
+
+    white-space:nowrap;
+
+    overflow-x:auto;
+
+}
+
+
+.vehicle-card::-webkit-scrollbar{
+
+    height:4px;
+
+}
+
+
+/*=================================================
+                مؤشر الحالة
+=================================================*/
+
+.vehicle-status-dot{
+
+    width:14px;
+
+    height:14px;
+
+    border-radius:50%;
+
+    margin-left:10px;
+
+    flex-shrink:0;
+
+}
+
+
+.status-working{
+
+    background:#2e7d32;
+
+}
+
+
+.status-stopped{
+
+    background:#d32f2f;
+
+}
+
+
+/*=================================================
+                بيانات البطاقة
+=================================================*/
+
+.vehicle-number{
+
+    width:22%;
+
+    text-align:center;
+
+    font-weight:bold;
+
+}
+
+
+.vehicle-driver{
+
+    width:28%;
+
+    text-align:center;
+
+}
+
+
+.vehicle-notes{
+
+    width:50%;
+
+    text-align:right;
+
+    padding-right:10px;
+
+    color:#444;
+
+}
+
+
+/*=================================================
+                صفحة اعتماد الطلب
+=================================================*/
+
+.approval-card{
+
+    width:100%;
+
+    background:#ffffff;
+
+    border-radius:15px;
+
+    padding:18px;
+
+    margin:20px 0;
+
+    box-shadow:0 2px 10px rgba(0,0,0,.10);
+
+}
+
+
+.approval-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:12px 0;
+
+    border-bottom:1px solid #eeeeee;
+
+}
+
+
+.approval-row:last-child{
+
+    border-bottom:none;
+
+}
+
+
+.approval-title{
+
+    font-weight:bold;
+
+    color:#0d47a1;
+
+}
+
+
+/*=================================================
+                أزرار الاعتماد
+=================================================*/
+
+.approve-btn{
+
+    background:#2e7d32;
+
+}
+
+
+.reject-btn{
+
+    background:#d32f2f;
+
+}
+
+
+/*=================================================
+                شاشة التحميل
+=================================================*/
+
+.loading-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.35);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+}
+
+
+.loading-box{
+
+    width:260px;
+
+    background:#ffffff;
+
+    border-radius:16px;
+
+    padding:30px;
+
+    text-align:center;
+
+}
+
+
+.loading-spinner{
+
+    width:45px;
+
+    height:45px;
+
+    margin:auto;
+
+    border:5px solid #dddddd;
+
+    border-top:5px solid #1565c0;
+
+    border-radius:50%;
+
+    animation:spin 1s linear infinite;
+
+}
+
+
+.loading-text{
+
+    margin-top:18px;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+}
+
+
+@keyframes spin{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+
+/*=================================================
+                رسالة النجاح
+=================================================*/
+
+.success-message{
+
+    position:fixed;
+
+    left:50%;
+
+    bottom:25px;
+
+    transform:translateX(-50%);
+
+    background:#2e7d32;
+
+    color:#ffffff;
+
+    padding:15px 30px;
+
+    border-radius:12px;
+
+    font-weight:bold;
+
+    z-index:10000;
+
+}
+
+/*=================================================
+            البطاقات الخاصة بطلبات الاعتماد
+=================================================*/
+
+.request-info{
+
+    width:100%;
+
+    background:#ffffff;
+
+    border-radius:15px;
+
+    padding:18px;
+
+    margin:15px 0;
+
+    box-shadow:0 2px 10px rgba(0,0,0,.10);
+
+}
+
+
+.request-title{
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    color:#0d47a1;
+
+    margin-bottom:15px;
+
+}
+
+
+.request-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:12px 0;
+
+    border-bottom:1px solid #eeeeee;
+
+}
+
+
+.request-item:last-child{
+
+    border-bottom:none;
+
+}
+
+
+.request-label{
+
+    font-weight:bold;
+
+    color:#555;
+
+}
+
+
+.request-value{
+
+    color:#222;
+
+    text-align:left;
+
+}
+
+
+/*=================================================
+                بطاقات الرسائل
+=================================================*/
+
+.info-box{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-top:15px;
+
+    border-radius:12px;
+
+    background:#e3f2fd;
+
+    color:#0d47a1;
+
+    font-weight:bold;
+
+}
+
+
+.error-box{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-top:15px;
+
+    border-radius:12px;
+
+    background:#ffebee;
+
+    color:#c62828;
+
+    font-weight:bold;
+
+}
+
+
+.success-box{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-top:15px;
+
+    border-radius:12px;
+
+    background:#e8f5e9;
+
+    color:#2e7d32;
+
+    font-weight:bold;
+
+}
+
+
+/*=================================================
+                تحسين الجوال
+=================================================*/
+
+@media (max-width:768px){
+
+    .container{
+
+        width:100%;
+
+    }
+
+    .logo{
+
+        width:120px;
+
+        height:120px;
+
+    }
+
+    h1{
+
+        font-size:22px;
+
+    }
+
+    h2{
+
+        font-size:18px;
+
+    }
+
+    h3{
+
+        font-size:16px;
+
+    }
+
+    button{
+
+        height:54px;
+
+        font-size:15px;
+
+    }
+
+    .input-card{
+
+        flex-direction:row;
+
+        padding:12px;
+
+    }
+
+    .card-title{
+
+        width:35%;
+
+        font-size:14px;
+
+    }
+
+    .card-input{
+
+        width:65%;
+
+    }
+
+    .section-card{
+
+        font-size:13px;
+
+    }
+
+    .vehicle-card{
+
+        font-size:12px;
+
+        min-height:28px;
+
+    }
+
+    .vehicle-number{
+
+        width:24%;
+
+    }
+
+    .vehicle-driver{
+
+        width:28%;
+
+    }
+
+    .vehicle-notes{
+
+        width:48%;
+
+    }
+
+    .approval-row{
+
+        font-size:14px;
+
+    }
+
+}
+
+
+/*=================================================
+                الشاشات الكبيرة
+=================================================*/
+
+@media (min-width:1200px){
+
+    .container{
+
+        max-width:1000px;
+
+    }
+
+}
+
+
+/*=================================================
+                    نهاية الملف
+=================================================*/
