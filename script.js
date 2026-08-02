@@ -16,7 +16,8 @@ let pendingRequest = null;
 
 let apiReady = false;
 
-
+const API_URL =
+"https://script.google.com/macros/s/AKfycbz5Fi_yw8z-qHv5MFB1DP_LbB4LcPjwubPPVch9Nb8Opmnf-4RrX4hv8m51WrrnZyI9Gw/exec";
 /*=================================================
                 عناصر الصفحة
 =================================================*/
