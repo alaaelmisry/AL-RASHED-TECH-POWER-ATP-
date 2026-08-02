@@ -64,24 +64,25 @@ document.getElementById("stopped");
                 تحميل الصفحة
 =================================================*/
 
-window.onload = function(){
+window.onload = async function(){
 
-    initializeSystem();
+    await initializeSystem();
 
 };
-
 
 /*=================================================
             تهيئة النظام
 =================================================*/
 
-function initializeSystem(){
+async function initializeSystem(){
 
     updateDateTime();
 
     setInterval(updateDateTime,1000);
 
     registerEvents();
+
+    await loadVehiclesFromServer();
 
     renderVehicles();
 
@@ -566,17 +567,31 @@ async function loadVehiclesFromServer(){
 
         }
 
-        updateLocalVehicles(result.vehicles);
+       function updateLocalVehicles(serverVehicles){
 
-        renderVehicles();
+    vehicles.length = 0;
 
-    }
+    serverVehicles.forEach(vehicle=>{
 
-    catch(error){
+        vehicles.push({
 
-        console.error(error);
+            id:Number(vehicle.id),
 
-    }
+            number:vehicle.number,
+
+            type:vehicle.type,
+
+            driver:vehicle.driver,
+
+            status:vehicle.status,
+
+            notes:vehicle.notes,
+
+            lastUpdate:vehicle.lastUpdate
+
+        });
+
+    });
 
 }
 /*===============================================
